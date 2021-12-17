@@ -1,7 +1,9 @@
 import React from 'react';
 import { View, StatusBar, SafeAreaView } from 'react-native';
 import {useFonts, Montserrat_400Regular, Montserrat_700Bold} from "@expo-google-fonts/montserrat";
-import Cesta from './src/Screens/Cesta'
+import AppLoading from 'expo-app-loading';
+import Cesta from './src/Screens/Cesta';
+import mock from "./src/Mocks/Cesta";
 
 
 export default function App() {
@@ -12,14 +14,13 @@ export default function App() {
   });
 
   if(!loadingFonts) {
-    return <SafeAreaView></SafeAreaView>
+    return <AppLoading></AppLoading>
   }
 
   return (
-    <SafeAreaView>
-      <Cesta></Cesta>
+    <SafeAreaView style={{flex: 1}}>
+      <Cesta {...mock}></Cesta>
       <StatusBar style="auto" />
-      <SafeAreaView style=""></SafeAreaView>
     </SafeAreaView>
   );
 }
